@@ -30,9 +30,7 @@ export default {
       this.amount = data.amount;
     },
     toPage2() {
-      this.$toast('正在进行扫码，请稍后！');
       sessionStorage.setItem('userId', this.userId);
-      sessionStorage.setItem('amount', this.amount);
       setTimeout(() => {
         this.$router.push({
           path: '/page2'
@@ -48,7 +46,7 @@ export default {
 .page{
   height:100vh;
   .bg{
-    background-image: url("../assets/page1.jpg");
+    background-image: url("../assets/1.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width:100%;

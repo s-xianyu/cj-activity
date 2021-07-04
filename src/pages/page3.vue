@@ -1,19 +1,9 @@
 <template>
   <div class="page">
-    <div class="page-head">
-      <div class="page-head__icon">
-        <img src="@/assets/shop.png" alt="">
-      </div>
-      <div class="page-head__title">YAYASAN PERINTIS MALAYSIA</div>
+    <div class="bg">
+      <input type="number" v-model="amount">
+      <div class="btn" @click="Confirm"></div>
     </div>
-    <div class="page-content">
-      <div class="page-content__top">Amount</div>
-      <div class="page-content__bottom">
-        <div class="page-RM">RM</div>
-        <input type="number" placeholder="请输入金额" v-model="amount">
-      </div>
-    </div>
-    <div class="page-btn" @click="Confirm">Confirm</div>
   </div>
 </template>
 
@@ -27,7 +17,7 @@ export default {
     }
   },
   mounted() {
-    this.amount = sessionStorage.getItem('amount') || '';
+    this.amount = '0.00';
     this.userId = sessionStorage.getItem('userId') || '';
   },
   methods: {
@@ -52,69 +42,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/mixin";
+@import "../style/mixin";
 .page{
-  margin:1.5rem .4rem 0;
-  &-head{
-    @include flexCenter;
-    justify-content: flex-start;
-    &__icon{
-      @include wh(1.2rem, 1.2rem);
-      background: #92e9f8;
-      border-radius: 50%;
-      @include flexCenter;
-      img{
-        @include wh(.8rem, .8rem);
-      }
+  height:100vh;
+  .bg{
+    background-image: url("../assets/3.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:100%;
+    height:100%;
+    position: relative;
+    input{
+      font-size: .6rem;
+      font-weight: 100;
+      color: #3792f5;
+      position: absolute;
+      top: 4.3rem;
+      left: 1.6rem;
     }
-    &__title{
-      font-size: .3rem;
-      margin-left:.3rem;
-      font-weight: bold;
+    .btn{
+      background: rgba(0,0,0,0);
+      width: 5.6rem;
+      height: 1rem;
+      position: absolute;
+      top: 12rem;
+      left: 0.7rem;
     }
-  }
-  &-content{
-    background: #f3f3f3;
-    border-bottom: .03rem solid #3792f5;
-    padding:.2rem .2rem 0;
-    &__top{
-      color:#3792f5;
-      font-size: .3rem;
-    }
-    &__bottom{
-      display: flex;
-      align-items: center;
-      .page-RM{
-        width:1rem;
-        font-size: .5rem;
-        color:#3792f5;
-      }
-      input{
-        width:calc(100% - 1rem);
-        border: none;
-        outline: none;
-        border-radius: .1rem;
-        height:1rem;
-        padding-left:.1rem;
-        font-size: .4rem;
-        color:#666;
-        background: transparent;
-        &::placeholder{
-          color:#666;
-          font-size: .35rem;
-        }
-      }
-    }
-  }
-  &-btn{
-    width:90%;
-    height:1rem;
-    background: #3792f5;
-    border-radius: 1rem;
-    font-size: .45rem;
-    color:#fff;
-    @include flexCenter;
-    margin:1.5rem auto 0;
   }
 }
 </style>
