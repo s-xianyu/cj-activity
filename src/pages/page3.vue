@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     async Confirm() {
+      sessionStorage.setItem('amount', this.amount);
       const { data } = await get('/cashback/payCSB', {
         amount: this.amount,
         userId: this.userId

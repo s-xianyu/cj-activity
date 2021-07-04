@@ -3,6 +3,7 @@
     <div class="bg">
       <div class="amount">{{amount}}</div>
       <div class="btn" @click="toPage2"></div>
+      <div class="pay" @click="toPage6"></div>
     </div>
   </div>
 </template>
@@ -36,6 +37,11 @@ export default {
           path: '/page2'
         })
       },1000)
+    },
+    toPage6() {
+      this.$router.push({
+        path: '/page6'
+      })
     }
   }
 }
@@ -68,6 +74,16 @@ export default {
       position: absolute;
       top:3.4rem;
       left:.3rem;
+      z-index: 100;
+    }
+    .pay{
+      width:1.7rem;
+      height: 1.7rem;
+      background: rgba(0,0,0,0);
+      position: absolute;
+      top:3.4rem;
+      left:2rem;
+      z-index: 100;
     }
   }
 }
