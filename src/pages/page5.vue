@@ -11,7 +11,7 @@
           <p>{{item.dateTime | timeFilter}}</p>
         </div>
       </div>
-      <div class="line">-- 我是有底线的 --</div>
+      <div class="line" @click="toHome">-- 我是有底线的 --</div>
     </div>
   </div>
 </template>
@@ -35,12 +35,6 @@ export default {
   mounted() {
     this.userId = sessionStorage.getItem('userId') || '';
     this.getList();
-    this.$toast('5秒后我要回首页了')
-    setTimeout(() => {
-      // this.$router.push({
-      //   path: '/'
-      // })
-    }, 5000)
   },
   methods: {
     async getList() {
@@ -49,6 +43,13 @@ export default {
       })
       this.list = data;
       console.log(data)
+    },
+    toHome() {
+      setTimeout(() => {
+        this.$router.push({
+          path: '/home'
+        })
+      }, 1000)
     }
   }
 }
@@ -60,7 +61,7 @@ export default {
   height: 100vh;
 
   .bg {
-    background-image: url("../assets/6.png");
+    background-image: url("../assets/page5.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;

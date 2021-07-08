@@ -8,7 +8,6 @@
       <div class="dateTime">{{dateTime}}</div>
       <div class="refNoLab">eWallet Ref No.</div>
       <div class="refNo">{{refNo}}</div>
-      <div class="btn2" @click="toPage5"></div>
       <div class="btn" @click="toHome"></div>
     </div>
   </div>
@@ -33,13 +32,6 @@ export default {
     this.userId = sessionStorage.getItem('userId') || '';
   },
   methods: {
-    toPage5() {
-      setTimeout(() => {
-        this.$router.push({
-          path: '/page5'
-        })
-      }, 1000)
-    },
     toHome() {
       setTimeout(() => {
         this.$router.push({
@@ -55,7 +47,7 @@ export default {
 .page {
   height: 100vh;
   .bg {
-    background-image: url("../assets/page4.png");
+    background-image: url("../assets/page4_1.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;
@@ -131,15 +123,6 @@ export default {
     .btn{
       position: absolute;
       top: 12.3rem;
-      left: 0;
-      width: 100%;
-      height: 1rem;
-      background: transparent;
-
-    }
-    .btn2{
-      position: absolute;
-      top: 9.3rem;
       left: 0;
       width: 100%;
       height: 1rem;

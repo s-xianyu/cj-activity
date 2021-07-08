@@ -9,18 +9,20 @@ VueRouter.prototype.push = function push(location) {
 
 Vue.use(VueRouter)
 const routes = [
-  { path: '*', redirect: '/home', name: '默认'},
-
+  { path: '*', redirect: '/login', name: '默认'},
+  { path:'/login', component: ()=> import('../pages/login') },
   { path:'/home', component: ()=> import('../pages/page1') },
   { path:'/page2', component: ()=> import('../pages/page2') },
+  { path:'/page2_2', component: ()=> import('../pages/page2_2') },
   { path:'/page3', component: ()=> import('../pages/page3') },
   { path:'/page4', component: ()=> import('../pages/page4') },
+  { path:'/page4_1', component: ()=> import('../pages/page4_1') },
+  { path:'/page4_2', component: ()=> import('../pages/page4_2') },
+  { path:'/page4_3', component: ()=> import('../pages/page4_3') },
   { path:'/page5', component: ()=> import('../pages/page5') },
-  { path:'/page6', component: ()=> import('../pages/page6') },
-  { path:'/page7', component: ()=> import('../pages/page7') },
 ]
 
 export default new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   routes
 })

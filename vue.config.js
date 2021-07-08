@@ -31,7 +31,7 @@ const cdn = {
 
 module.exports = {
   devServer: {
-    port: 4000,
+    port: 80,
     proxy: {
       '/api': {
         target: process.env.VUE_APP_API,

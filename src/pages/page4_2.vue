@@ -26,10 +26,10 @@ export default {
     }
   },
   mounted() {
-    this.amount = sessionStorage.getItem('p3.amount')|| '';
-    this.receiver = sessionStorage.getItem('p3.receiver')|| '';
-    this.dateTime = sessionStorage.getItem('p3.dateTime')|| '';
-    this.refNo = sessionStorage.getItem('p3.refNo')|| '';
+    this.amount = sessionStorage.getItem('p4.amount')|| '';
+    this.receiver = sessionStorage.getItem('p4.receiver')|| '';
+    this.dateTime = sessionStorage.getItem('p4.dateTime')|| '';
+    this.refNo = sessionStorage.getItem('p4.refNo')|| '';
     this.userId = sessionStorage.getItem('userId') || '';
   },
   methods: {

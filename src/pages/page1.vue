@@ -2,8 +2,9 @@
   <div class="page">
     <div class="bg">
       <div class="amount">{{amount}}</div>
-      <div class="btn" @click="toPage2"></div>
-      <div class="pay" @click="toPage6"></div>
+      <div class="scan" @click="toPage2"></div>
+      <div class="pay" @click="toPage2_2"></div>
+      <div class="history" @click="toPage5"></div>
     </div>
   </div>
 </template>
@@ -23,24 +24,30 @@ export default {
   },
   methods: {
     async getAmount() {
-      const i = Math.random() * (999999999 - 100000000) + 100000000;
-      this.userId = parseInt(i, 10);
+      this.userId = sessionStorage.getItem('userId') ;
+      if(this.userId == null){
+        const i = Math.random() * (999999999 - 100000000) + 100000000;
+        this.userId = parseInt(i, 10);
+      }
       const { data } = await get('/cashback/getUserAmount', {
         userId: this.userId
       })
       this.amount = data.amount;
+      sessionStorage.setItem('userId', this.userId);
     },
     toPage2() {
-      sessionStorage.setItem('userId', this.userId);
-      setTimeout(() => {
-        this.$router.push({
-          path: '/page2'
-        })
-      },1000)
-    },
-    toPage6() {
       this.$router.push({
-        path: '/page6'
+        path: '/page2'
+      })
+    },
+    toPage2_2() {
+      this.$router.push({
+        path: '/page2_2'
+      })
+    },
+    toPage5() {
+      this.$router.push({
+        path: '/page5'
       })
     }
   }
@@ -52,7 +59,7 @@ export default {
 .page{
   height:100vh;
   .bg{
-    background-image: url("../assets/1.png");
+    background-image: url("../assets/page1.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width:100%;
@@ -67,7 +74,7 @@ export default {
       top:.83rem;
       left:1.6rem;
     }
-    .btn{
+    .scan{
       width:1.7rem;
       height: 1.7rem;
       background: rgba(0,0,0,0);
@@ -84,6 +91,15 @@ export default {
       top:3.4rem;
       left:2rem;
       z-index: 100;
+    }
+    .history{
+      background: rgba(0,0,0,0);
+      z-index: 100;
+      width: 3.4rem;
+      height: 1rem;
+      position: absolute;
+      top: 2rem;
+      left: 3.5rem;
     }
   }
 }

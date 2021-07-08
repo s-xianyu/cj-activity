@@ -10,12 +10,12 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$toast('二维码识别成功！')
-    },2000)
+    },5000)
     setTimeout(() => {
       this.$router.push({
         path: '/page3'
       })
-    }, 3000)
+    }, 6000)
   }
 }
 </script>
@@ -24,7 +24,7 @@ export default {
 .page{
   height:100vh;
   .bg{
-    background-image: url("../assets/2.png");
+    background-image: url("../assets/page2.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width:100%;

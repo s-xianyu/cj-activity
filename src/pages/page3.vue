@@ -13,7 +13,11 @@ export default {
   name: "page3",
   data() {
     return {
-      amount: ''
+      amount: '',
+      receiver: '',
+      dateTime: '',
+      refNo: '',
+      hasCashback: ''
     }
   },
   mounted() {
@@ -22,18 +26,30 @@ export default {
   },
   methods: {
     async Confirm() {
-      sessionStorage.setItem('amount', this.amount);
       const { data } = await get('/cashback/payCSB', {
         amount: this.amount,
         userId: this.userId
       });
       if (Object.keys(data).length) {
-        this.$toast('支付成功！')
-        setTimeout(() => {
-          this.$router.push({
-            path: '/page4'
-          })
-        }, 1000)
+        sessionStorage.setItem('p3.amount',data.amount)
+        sessionStorage.setItem('p3.receiver',data.receiver)
+        sessionStorage.setItem('p3.dateTime',data.dateTime)
+        sessionStorage.setItem('p3.refNo',data.refNo)
+        sessionStorage.setItem('p3.hasCashback',data.hasCashback)
+        if(data.hasCashback == 'false'){
+          setTimeout(() => {
+            this.$router.push({
+              path: '/page4_1'
+            })
+          }, 1000)
+        }else {
+          setTimeout(() => {
+            this.$router.push({
+              path: '/page4'
+            })
+          }, 1000)
+        }
+
       } else {
         this.$toast('支付失败，请重试！')
       }
@@ -47,7 +63,7 @@ export default {
 .page{
   height:100vh;
   .bg{
-    background-image: url("../assets/3.png");
+    background-image: url("../assets/page3.png");
     background-repeat: no-repeat;
     background-size: 100%;
     width:100%;
