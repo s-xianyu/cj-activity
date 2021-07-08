@@ -11,18 +11,24 @@
       <div class="btn2" @click="toPage5"></div>
       <div class="btn" @click="toHome"></div>
     </div>
+    <div class="popup" v-show="show">
+      <div class="btn" @click="addList"></div>
+    </div>
   </div>
 </template>
 
 <script>
+import { Popup } from 'vant';
 export default {
   name: "page2",
+  components: { Popup },
   data() {
     return {
       amount: '',
       receiver: '',
       dateTime: '',
-      refNo: ''
+      refNo: '',
+      show: true
     }
   },
   mounted() {
@@ -46,6 +52,9 @@ export default {
           path: '/home'
         })
       }, 1000)
+    },
+    addList() {
+      this.$toast('点击按钮加载数据！')
     }
   }
 }
@@ -144,6 +153,30 @@ export default {
       width: 100%;
       height: 1rem;
       background: transparent;
+    }
+  }
+  .popup{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background: rgba(0,0,0,.5);
+    &:before{
+      content: '';
+      position: absolute;
+      width:90%;
+      height:470px;
+      background: url("../assets/Popup.png") no-repeat center 100%;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+    }
+    .btn{
+      position: absolute;
+      top: 580px;
+      width:100%;
+      height:50px;
     }
   }
 }
